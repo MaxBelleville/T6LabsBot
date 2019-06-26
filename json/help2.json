@@ -1,0 +1,46 @@
+[{
+        "type": "section",
+        "text": {
+            "type": "mrkdwn",
+            "text": "*Help Page 2*"
+        }
+    },
+    {
+        "type": "divider"
+    },
+    {
+        "type": "section",
+        "fields": [{
+                "type": "mrkdwn",
+                "text": "*/Add-Repo [repo]:*\nAdd a repo to mointor for any changes."
+            },
+            {
+                "type": "mrkdwn",
+                "text": "*/Delete-Repo [repo]:*\nRemove repo from mointoring changes."
+            },
+            {
+                "type": "mrkdwn",
+                "text": "*/Create-Poll [time]:*\nCreate a poll that will end after 'x' hours."
+            },
+            {
+                "type": "mrkdwn",
+                "text": "*/Pinned:*\nView pinned messages from all channels."
+            },
+            {
+                "type": "mrkdwn",
+                "text": "*/Clear [user] [#number of messages]:*\nClear messsages from a channel."
+            }
+        ]
+    },
+    {
+        "type": "actions",
+        "elements": [{
+            "type": "button",
+            "text": {
+                "type": "plain_text",
+                "text": "<"
+            },
+            "value": "goto_page1"
+        }]
+    }
+]

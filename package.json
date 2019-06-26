@@ -1,0 +1,21 @@
+{
+  "name": "t6bot",
+  "version": "1.0.0",
+  "description": "A bot for t6labs slack workspace",
+  "main": "botStart.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Max Belleville",
+  "license": "ISC",
+  "dependencies": {
+    "@slack/web-api": "^5.0.1",
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "dotenv": "^8.0.0",
+    "express": "^4.17.1",
+    "localtunnel": "^1.9.2",
+    "mongoose": "^5.6.0",
+    "request": "^2.88.0"
+  }
+}

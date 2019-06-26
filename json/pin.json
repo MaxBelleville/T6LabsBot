@@ -1,0 +1,21 @@
+[
+{
+    "type": "context",
+    "elements": [
+        {
+            "type": "plain_text",
+            "text": "Date"
+        }
+    ]
+},
+{
+    "type": "section",
+    "text": {
+        "type": "mrkdwn",
+        "text": "*Username*\nMessage"
+    }
+},
+{
+    "type": "divider"
+}
+]

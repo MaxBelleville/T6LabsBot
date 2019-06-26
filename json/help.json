@@ -1,0 +1,50 @@
+[{
+        "type": "section",
+        "text": {
+            "type": "mrkdwn",
+            "text": "*Help Page 1*"
+        }
+    },
+    {
+        "type": "divider"
+    },
+    {
+        "type": "section",
+        "fields": [{
+                "type": "mrkdwn",
+                "text": "*/Create-Project:*\nAdd project to a list of current projects."
+            },
+            {
+                "type": "mrkdwn",
+                "text": "*/Projects:*\nView A list of all in-development projects."
+            },
+            {
+                "type": "mrkdwn",
+                "text": "*/Delete-Project [project name]:*\nRemove project from list of projects."
+            },
+            {
+                "type": "mrkdwn",
+                "text": "*/Create-Link [url]:*\nAdd a link to the list of our tools/websites."
+            },
+            {
+                "type": "mrkdwn",
+                "text": "*/Links:*\nList of all tools and websites we use. "
+            },
+            {
+                "type": "mrkdwn",
+                "text": "*/Delete-Link [url]:*\nRemove a link to the list of links."
+            }
+        ]
+    },
+    {
+        "type": "actions",
+        "elements": [{
+            "type": "button",
+            "text": {
+                "type": "plain_text",
+                "text": ">"
+            },
+            "value": "goto_page2"
+        }]
+    }
+]
