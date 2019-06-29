@@ -31,7 +31,6 @@ module.exports = {
 
                 })
                 utils.getIm(req.body.user_id, result => {
-                    console.log(result.id)
                     web.chat.postMessage({
                         channel: result.id,
                         blocks: pinned
@@ -64,12 +63,15 @@ module.exports = {
     newProj(req, res, next) {
         res.send();
         var obj = JSON.parse(fs.readFileSync('json/project.json', 'utf8'))
-        web.dialog.open({dialog:obj,trigger_id:req.body.trigger_id})
+        web.dialog.open({
+            dialog: obj,
+            trigger_id: req.body.trigger_id
+        })
     },
     viewProj(req, res, next) {
-        ProjectModel.find({}, (err,projs) => {
+        ProjectModel.find({}, (err, projs) => {
             if (projs.length != 0) {
-                var project= []
+                var project = []
                 projs.forEach(proj => {
                     var obj = JSON.parse(fs.readFileSync('json/pin.json', 'utf8'))
                     obj[0].elements[0].text = proj.startDate;
@@ -90,16 +92,16 @@ module.exports = {
     delProj(req, res, next) {
         res.send();
         ProjectModel.findOne({
-            projectName: req.body.text
-        },
-        (err, proj) => {
-            proj.remove()
-        })
+                projectName: req.body.text
+            },
+            (err, proj) => {
+                proj.remove()
+            })
     },
     viewLink(req, res, next) {
         LinkModel.find({}, (err, links) => {
             if (links.length != 0) {
-                var linked= []
+                var linked = []
                 links.forEach(link => {
                     var obj = JSON.parse(fs.readFileSync('json/link.json', 'utf8'))
                     obj[0].text.text = link.Link;
@@ -117,23 +119,28 @@ module.exports = {
     },
     newLink(req, res, next) {
         var link = new LinkModel({
-           Link: req.body.text
+            Link: req.body.text
         })
         link.save()
         res.send();
     },
     delLink(req, res, next) {
         LinkModel.findOne({
-            Link: req.body.text
-        },
-        (err, link) => {
-            link.remove()
-        })
+                Link: req.body.text
+            },
+            (err, link) => {
+                link.remove()
+            })
         res.send();
     },
     poll(req, res, next) {
-        console.log(req.body);
         res.send();
+        var obj = JSON.parse(fs.readFileSync('json/poll.json', 'utf8'))
+        if (!req.body.channel_id.startsWith("D")) obj.elements[2].value = req.body.channel_id
+        web.dialog.open({
+            dialog: obj,
+            trigger_id: req.body.trigger_id
+        })
     },
     addRepo(req, res, next) {
         console.log(req.body);
@@ -146,8 +153,11 @@ module.exports = {
     oath(req, res, next) {
         //Lazy way of doing things.
         console.log(req.query);
-        web.oauth.access({client_id:"587041885090.675744099190",
-        client_secret:"8dc273fe9dd2de330c76d92099fc6045",code:req.query.code}).then(ouath=>{
+        web.oauth.access({
+            client_id: "587041885090.675744099190",
+            client_secret: "8dc273fe9dd2de330c76d92099fc6045",
+            code: req.query.code
+        }).then(ouath => {
             console.log(ouath)
         });
         res.send();

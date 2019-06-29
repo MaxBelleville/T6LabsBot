@@ -1,0 +1,6 @@
+{
+    "type": "text",
+    "label":"Answer X",
+    "name": "answer_x",
+    "placeholder": "Please input answer x"
+}

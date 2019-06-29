@@ -1,0 +1,13 @@
+[
+	{
+		"type": "section",
+		"text": {
+			"type": "mrkdwn",
+			"text": "Question"
+		}
+	},
+
+	{
+		"type": "divider"
+	}
+]

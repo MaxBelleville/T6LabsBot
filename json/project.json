@@ -1,22 +1,24 @@
 { "callback_id": "create-project",
     "title": "Create a Project",
     "submit_label": "Create",
-    "notify_on_cancel": true,
     "elements": [
         {
             "type": "text",
             "label":"Project Title",
-            "name": "proj_title"
+            "name": "proj_title",
+            "placeholder": "New Project Name"
         },
         {
             "type": "text",
             "label":"Project Description",
-            "name": "proj_desc"
+            "name": "proj_desc",
+            "placeholder": "New Project Description"
         },
         {
             "type": "text",
             "label":"Project Start Date",
-            "name": "proj_date"
+            "name": "proj_date",
+            "placeholder": "Date when project was started"
         }
     ]
   }

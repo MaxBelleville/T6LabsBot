@@ -1,0 +1,27 @@
+[
+    {
+		"type": "section",
+		"text": {
+			"type": "mrkdwn",
+			"text": "Answer X"
+		},
+		"accessory": {
+			"type": "button",
+			"text": {
+				"type": "plain_text",
+				"emoji": true,
+				"text": "Vote"
+			},
+			"value": "answer_x"
+		}
+	},
+	{
+		"type": "context",
+		"elements": [
+			{
+				"type": "mrkdwn",
+				"text": "No Votes"
+			}
+		]
+	}
+]

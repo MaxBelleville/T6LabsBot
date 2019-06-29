@@ -1,0 +1,63 @@
+{ "callback_id": "create-poll",
+    "title": "Create a Poll",
+    "submit_label": "Create",
+    "elements": [
+        {
+            "type": "text",
+            "label":"Question",
+            "name": "poll_question",
+            "placeholder": "Example: What is your favourite...?"
+        },
+        {
+            "label": "# of answers",
+            "type": "select",
+            "value": "2",
+            "name": "answer_num",
+            "options": [
+              {
+                "label": "2",
+                "value": "2"
+              },
+              {
+                "label": "3",
+                "value": "3"
+              },
+              {
+                "label": "4",
+                "value": "4"
+              },
+              {
+                "label": "5",
+                "value": "5"
+              }, 
+              {
+                "label": "6",
+                "value": "6"
+              },
+              {
+                "label": "7",
+                "value": "7"
+              },
+              {
+                "label": "8",
+                "value": "8"
+              },
+              {
+                "label": "9",
+                "value": "9"
+              },
+              {
+                "label": "10",
+                "value": "10"
+              } 
+            ]
+          },
+        {
+            "label": "Post To:",
+            "name": "channel",
+            "type": "select",
+            "value": "CBHM7UJR2",
+            "data_source": "channels"
+        }
+    ]
+  }
