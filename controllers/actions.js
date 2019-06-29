@@ -36,7 +36,6 @@ function handlePoll(action) {
 module.exports = {
     handleAction(req, res, next) {
         action = JSON.parse(req.body.payload);
-        console.log(action)
         if(!action.type.startsWith("dialog"))
         handleHelp(action)
         else {

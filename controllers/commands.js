@@ -31,10 +31,10 @@ module.exports = {
 
                 })
                 utils.getIm(req.body.user_id, result => {
+                    console.log(result.id)
                     web.chat.postMessage({
                         channel: result.id,
-                        blocks: pinned,
-                        text:""
+                        blocks: pinned
                     })
                 })
             }
@@ -75,7 +75,7 @@ module.exports = {
                     obj[0].elements[0].text = proj.startDate;
                     obj[1].text.text = "*" + proj.projectName +
                         "*\n" + proj.projectDesc;
-                    for (var i = 0; i < 2; i++) project.push(obj[i])
+                    for (var i = 0; i < 3; i++) project.push(obj[i])
                 })
                 utils.getIm(req.body.user_id, result => {
                     web.chat.postMessage({

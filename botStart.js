@@ -1,8 +1,9 @@
 require('dotenv').config()
+
+const exec = require('child_process').exec;
 const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
-var localtunnel = require('localtunnel');
 const cors = require('cors');
 const app = express();
 const port = process.env.PORT || 3000;
@@ -16,11 +17,6 @@ app.use(bodyParser.urlencoded({
 }))
 app.use(bodyParser.json());
 require('./routes/routes')(app);
-
-app.listen(port, () => {
-  var tunnel = localtunnel(port, {
-    subdomain: "t6labs-bot"
-  }, (err, tunnel) => {
-    console.log("We good: " + tunnel.url)
-  });
+app.listen(port, ()=>{
+  child = exec("ssh -R t6labs-bot:80:localhost:"+port+" serveo.net");
 });
