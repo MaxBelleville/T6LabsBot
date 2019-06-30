@@ -18,5 +18,5 @@ app.use(bodyParser.urlencoded({
 app.use(bodyParser.json());
 require('./routes/routes')(app);
 app.listen(port, ()=>{
-  child = exec("ssh -R t6labs-bot:80:localhost:"+port+" serveo.net");
+  child = exec("ssh -o SeverAliveInterval=60 -R t6labs-bot:80:localhost:"+port+" serveo.net");
 });
