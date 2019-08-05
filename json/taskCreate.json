@@ -1,0 +1,33 @@
+{ "callback_id": "create-task",
+    "title": "Create a Task",
+    "submit_label": "Create",
+    "elements": [
+        {
+            "type": "text",
+            "label":"Task Title",
+            "name": "task_title",
+            "placeholder": "New Task Name"
+        },
+        {
+            "type": "text",
+            "label":"Task Description",
+            "name": "task_desc",
+            "placeholder": "New Task Description"
+        },
+        {
+            "label": "Assignee:",
+            "name": "user",
+            "type": "select",
+            "data_source": "users",
+            "optional":"true",
+            "placeholder":"Pick one, defaults to @everyone"
+        },
+        {
+            "label": "Post To (when complete):",
+            "name": "channel",
+            "type": "select",
+            "value": "CBHM7UJR2",
+            "data_source": "channels"
+        }
+    ]
+  }

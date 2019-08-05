@@ -4,7 +4,7 @@ const commands = require('../controllers/commands')
 module.exports = function (app) {
     app.post('/events', events.handleEvent)
         .post('/actions', actions.handleAction)
-
+        
         .post('/commands/addRepo', commands.addRepo)
         .post('/commands/delRepo', commands.delRepo)
 
@@ -21,6 +21,7 @@ module.exports = function (app) {
         .post('/commands/pin', commands.pin)
         .post('/commands/clear', commands.clear)
         .post('/commands/poll', commands.poll)
+        .post('/commands/task',commands.task)
         .get('/oath', commands.oath)
 
 };

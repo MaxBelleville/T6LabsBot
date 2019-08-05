@@ -29,6 +29,10 @@
             {
                 "type": "mrkdwn",
                 "text": "*/Clear [user] [#number of messages]:*\nClear messsages from a channel."
+            },
+            {
+                "type": "mrkdwn",
+                "text": "*/Create-Task:*\nCreate a task"
             }
         ]
     },

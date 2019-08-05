@@ -150,12 +150,20 @@ module.exports = {
         console.log(req.body);
         res.send();
     },
+    task(req,res,next){
+        res.send();
+        var obj = JSON.parse(fs.readFileSync('json/taskCreate.json', 'utf8'))
+        web.dialog.open({
+            dialog: obj,
+            trigger_id: req.body.trigger_id
+        })
+    },
     oath(req, res, next) {
         //Lazy way of doing things.
         console.log(req.query);
         web.oauth.access({
-            client_id: "587041885090.675744099190",
-            client_secret: "8dc273fe9dd2de330c76d92099fc6045",
+            client_id: process.env.SLACK_CLIENT_ID,
+            client_secret: process.env.SLACK_CLIENT_SECRET,
             code: req.query.code
         }).then(ouath => {
             console.log(ouath)

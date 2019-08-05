@@ -6,6 +6,7 @@ var pollObj
 var pollQuestion
 var userVoted = []
 const ProjectModel = require('../models/projects')
+const TaskModel = require('../models/task')
 
 function handleHelp(action) {
     if (action.actions[0].value == "goto_page2") {
@@ -57,6 +58,20 @@ function handleHelp(action) {
     }
 }
 
+function handleTask(action){
+    if (action.actions[0].value == "complete_task") {
+        var text = action.message.blocks[0].elements[0].text;
+        TaskModel.find({ts: text}, (err, task) => {
+            utils.getUserName(action.user.id,true,user=>{
+                web.chat.postMessage({
+                    channel: task[0].channel,
+                    text: "*"+user.real_name+"* completed the task, *"+task[0].taskName+"*"
+                })
+            })
+        })
+    }
+}
+
 function createProj(action) {
     if (action.callback_id == 'create-project') {
         var proj = new ProjectModel({
@@ -65,6 +80,39 @@ function createProj(action) {
             startDate: action.submission.proj_date
         })
         proj.save()
+    }
+}
+
+
+function createTask(action){
+    if (action.callback_id == 'create-task') {
+        var date = utils.convertTS(action.action_ts)
+        var task = new TaskModel({
+            taskName: action.submission.task_title,
+            channel: action.submission.channel,
+            ts: date
+        })
+        task.save()
+        var obj = JSON.parse(fs.readFileSync('json/taskSend.json', 'utf8'))
+
+        obj[0].elements[0].text=date;
+        obj[1].text.text="*"+action.submission.task_title+"*\n"+action.submission.task_desc;
+        if(action.submission.user==null){
+            web.chat.postMessage({
+                blocks: obj,
+                channel: action.submission.channel
+            })
+        }
+        else {
+        utils.getUserName(action.submission.user,true, user=>{
+            utils.getIm(user.id, result => {
+                web.chat.postMessage({
+                    channel: result.id,
+                    blocks: obj
+                })
+            })
+        })
+        }
     }
 }
 
@@ -107,7 +155,6 @@ function handlePoll(action) {
         });
         web.chat.postMessage({
             blocks: obj,
-            user: action.user.id,
             channel: action.channel.id
         })
         pollFinalObj = obj
@@ -116,10 +163,13 @@ function handlePoll(action) {
 module.exports = {
     handleAction(req, res, next) {
         action = JSON.parse(req.body.payload);
-        if (!action.type.startsWith("dialog"))
+        if (!action.type.startsWith("dialog")) {
             handleHelp(action)
+            handleTask(action)
+        }
         else {
             createProj(action)
+            createTask(action)
             handlePoll(action)
         }
         res.send();
