@@ -4,6 +4,7 @@ const exec = require('child_process').exec;
 const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
+const gitReader =require('./controllers/gitReader')
 const cors = require('cors');
 const app = express();
 const port = process.env.PORT || 3000;
@@ -20,4 +21,5 @@ require('./routes/routes')(app);
 app.listen(port, ()=>{
   child = exec("ssh -o ServerAliveInterval=60 -R t6labs-bot:80:localhost:"+port+" serveo.net");
 console.log("Starting server at t6labs-bot.serveo.net");
+gitReader.start();
 });

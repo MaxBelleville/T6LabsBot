@@ -2,6 +2,7 @@ const utils = require('../utils')
 const PinnedModel = require('../models/pinned')
 const LinkModel = require('../models/link')
 const ProjectModel = require('../models/projects')
+const RepoModel = require('../models/repo')
 const fs = require('fs');
 const web = utils.getWeb()
 module.exports = {
@@ -143,31 +144,31 @@ module.exports = {
         })
     },
     addRepo(req, res, next) {
-        console.log(req.body);
+        var splitUrl= req.body.text.replace(".git","").split("/")
+        var repo = new RepoModel({
+            User: splitUrl[splitUrl.length-2],
+            RepoName: splitUrl[splitUrl.length-1]
+        })
+        repo.save();
         res.send();
     },
     delRepo(req, res, next) {
-        console.log(req.body);
+        var splitUrl= req.body.text.replace(".git","").split("/")
+        RepoModel.findOne({
+            RepoName: splitUrl[splitUrl.length-1],
+            User: splitUrl[splitUrl.length-2]
+        },
+        (err, repo) => {
+            repo.remove()
+        })
         res.send();
     },
-    task(req,res,next){
+    task(req, res, next) {
         res.send();
         var obj = JSON.parse(fs.readFileSync('json/taskCreate.json', 'utf8'))
         web.dialog.open({
             dialog: obj,
             trigger_id: req.body.trigger_id
         })
-    },
-    oath(req, res, next) {
-        //Lazy way of doing things.
-        console.log(req.query);
-        web.oauth.access({
-            client_id: process.env.SLACK_CLIENT_ID,
-            client_secret: process.env.SLACK_CLIENT_SECRET,
-            code: req.query.code
-        }).then(ouath => {
-            console.log(ouath)
-        });
-        res.send();
     }
 }

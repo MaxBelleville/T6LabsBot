@@ -22,6 +22,4 @@ module.exports = function (app) {
         .post('/commands/clear', commands.clear)
         .post('/commands/poll', commands.poll)
         .post('/commands/task',commands.task)
-        .get('/oath', commands.oath)
-
 };
