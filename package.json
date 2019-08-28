@@ -4,6 +4,7 @@
   "description": "A bot for t6labs slack workspace",
   "main": "botStart.js",
   "scripts": {
+    "start": "node botStart.js"
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Max Belleville",
