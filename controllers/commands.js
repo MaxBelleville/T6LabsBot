@@ -152,6 +152,25 @@ module.exports = {
         repo.save();
         res.send();
     },
+ viewRepo(req, res, next) {
+        RepoModel.find({}, (err, repo) => {
+              if (repo.length != 0) {
+                var linked = []
+                links.forEach(link => {
+                    var obj = JSON.parse(fs.readFileSync('json/link.json', 'utf8'))
+                    obj[0].text.text = "https://github.com/"+repo.User+"/"+repo.repoName;
+                    for (var i = 0; i < 2; i++) linked.push(obj[i])
+                })
+                utils.getIm(req.body.user_id, result => {
+                    web.chat.postMessage({
+                        channel: result.id,
+                        blocks: linked
+                    })
+                })
+            }
+        })
+        res.send();
+    },
     delRepo(req, res, next) {
         var splitUrl= req.body.text.replace(".git","").split("/")
         RepoModel.findOne({

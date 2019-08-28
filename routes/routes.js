@@ -7,6 +7,7 @@ module.exports = function (app) {
         
         .post('/commands/addRepo', commands.addRepo)
         .post('/commands/delRepo', commands.delRepo)
+	.post('/commands/viewRepo', commands.viewRepo)
 
         .post('/commands/newProj', commands.newProj)
         .post('/commands/viewProj', commands.viewProj)
