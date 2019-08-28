@@ -158,7 +158,7 @@ module.exports = {
                 var repos = []
                 repo.forEach(repo => {
                     var obj = JSON.parse(fs.readFileSync('json/link.json', 'utf8'))
-                    obj[0].text.text = "https://github.com/"+repo.User+"/"+repo.repoName;
+                    obj[0].text.text = "https://github.com/"+repo.User+"/"+repo.RepoName;
                     for (var i = 0; i < 2; i++) repos.push(obj[i])
                 })
                 utils.getIm(req.body.user_id, result => {
