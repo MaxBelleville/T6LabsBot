@@ -193,5 +193,12 @@ module.exports = {
             dialog: obj,
             trigger_id: req.body.trigger_id
         })
+    },
+    oath(req, res, next) {
+        web.oauth.access({client_id:process.env.SLACK_CLIENT_ID,
+        client_secret:process.env.SLACK_CLIENT_SECRET,code:req.query.code}).then(ouath=>{
+            console.log(ouath)
+        });
+        res.send();
     }
 }
