@@ -1,6 +1,4 @@
 require('dotenv').config()
-
-const exec = require('child_process').exec;
 const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
@@ -9,9 +7,7 @@ const cors = require('cors');
 const app = express();
 const port = process.env.PORT || 3000;
 
-mongoose.connect(process.env.DB_URI, {
-  useNewUrlParser: true
-})
+mongoose.connect(process.env.DB_URI)
 app.use(cors());
 app.use(bodyParser.urlencoded({
   extended: true
