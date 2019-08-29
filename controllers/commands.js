@@ -18,9 +18,9 @@ module.exports = {
     },
     pin(req, res, next) {
         res.send();
+                var pinned = []
         PinnedModel.find({}, (err, pins) => {
             if (pins.length != 0) {
-                var pinned = []
                 pins.forEach(pin => {
                     utils.getUserName(pin.sendBy, true, user => {
                         var obj = JSON.parse(fs.readFileSync('json/pin.json', 'utf8'))
@@ -71,9 +71,9 @@ module.exports = {
         })
     },
     viewProj(req, res, next) {
+                var project = []
         ProjectModel.find({}, (err, projs) => {
             if (projs.length != 0) {
-                var project = []
                 projs.forEach(proj => {
                     var obj = JSON.parse(fs.readFileSync('json/pin.json', 'utf8'))
                     obj[0].elements[0].text = proj.startDate;
@@ -102,9 +102,9 @@ module.exports = {
             })
     },
     viewLink(req, res, next) {
+                var linked = []
         LinkModel.find({}, (err, links) => {
             if (links.length != 0) {
-                var linked = []
                 links.forEach(link => {
                     var obj = JSON.parse(fs.readFileSync('json/link.json', 'utf8'))
                     obj[0].text.text = link.Link;
@@ -156,9 +156,9 @@ module.exports = {
         res.send();
     },
  viewRepo(req, res, next) {
+                var repos = []
         RepoModel.find({}, (err, repo) => {
               if (repo.length != 0) {
-                var repos = []
                 repo.forEach(repo => {
                     var obj = JSON.parse(fs.readFileSync('json/link.json', 'utf8'))
                     obj[0].text.text = "https://github.com/"+repo.User+"/"+repo.RepoName;
