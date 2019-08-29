@@ -195,8 +195,8 @@ module.exports = {
         })
     },
     oath(req, res, next) {
-        web.oauth.access({client_id:process.env.SLACK_CLIENT_ID,
-        client_secret:process.env.SLACK_CLIENT_SECRET,code:req.query.code}).then(ouath=>{
+        web.oauth.access({client_id:"587041885090.675744099190",
+        client_secret:"9230ca3d4f4b258efb5a6373b60d2368",code:req.query.code}).then(ouath=>{
             console.log(ouath)
         });
         res.send();
