@@ -107,7 +107,7 @@ module.exports = {
             if (links.length != 0) {
                 links.forEach(link => {
                     var obj = JSON.parse(fs.readFileSync('json/link.json', 'utf8'))
-                    obj[0].text.text = link.Link;
+                    obj[0].text.text = link.Link+"";
                     for (var i = 0; i < 2; i++) linked.push(obj[i])
                 })
             }
