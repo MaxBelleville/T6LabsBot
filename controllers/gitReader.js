@@ -32,7 +32,7 @@ function isHourAway(commitDate) {
         var index = noRepeat.indexOf(commitDate);
         noRepeat.slice(index,1);
     }
-    return diffMin <= 60 && !isRepeated
+    return diffMin <= 60
 }
 
 function read() {
