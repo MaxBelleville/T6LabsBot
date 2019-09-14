@@ -25,12 +25,8 @@ function isHourAway(commitDate) {
     }
 
     var date = new Date();
-console.log(date)
-console.log(commitDate)
     var diff = date.getTime() - commitDate.getTime();
-console.log(diff);
     var diffMin = Math.ceil(diff / (60000));
-	console.log(diffMin);
     if (!isRepeated) noRepeat.push(commitDate);
     if (diffMin > 60 && isRepeated) {
         var index = noRepeat.indexOf(commitDate);
@@ -53,7 +49,6 @@ function read() {
             request(option, (error, response, body) => {
                 var obj = JSON.parse(body);
                 if (obj.message != undefined)
-                    console.log(obj.message);
                 for (var i = 0; i < obj.length; i++) {
                     option = {
                         url: obj[i].commit.url + "",
@@ -66,7 +61,6 @@ function read() {
                         obj = JSON.parse(body);
                         var date = convertDate(obj.commit.author.date);
                         if (isHourAway(date)) {
-			console.log("Yay an new push to github");
                             web.chat.postMessage({
                                 channel: 'CLR1Y2PV0',
                                 text: "New commit: *" + obj.commit.message + "*, by: *" + obj.commit.author.name + "*"
@@ -81,8 +75,7 @@ function read() {
 
 module.exports = {
     start() {
-	console.log("API succesfully started, reading git");
 	read()
-        setInterval(read, 1000 * 3600);
+        setInterval(read, 1000 * 1800);
     }
 }
