@@ -61,9 +61,9 @@ function read() {
                     request(option, (error, response, body) => {
                         obj = JSON.parse(body);
                         var date = convertDate(obj.commit.author.date);
-			console.log(date);
+			console.log(isHourAway(date));
                         if (isHourAway(date)) {
-				console.log("Yay an new push to github");
+			console.log("Yay an new push to github");
                             web.chat.postMessage({
                                 channel: 'CLR1Y2PV0',
                                 text: "New commit: *" + obj.commit.message + "*, by: *" + obj.commit.author.name + "*"
