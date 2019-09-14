@@ -12,7 +12,7 @@ function convertDate(gitDate) {
     var year = parseInt(splitDate[0], 10)
     var month = parseInt(splitDate[1], 10) - 1
     var day = parseInt(splitDate[2], 10)
-    var hour = parseInt(splitTime[0]) - 4 //Timezone
+    var hour = parseInt(splitTime[0])
     var min = parseInt(splitTime[1])
     var sec = parseInt(splitTime[2])
     return new Date(year, month, day, hour, min, sec);
@@ -27,7 +27,7 @@ function isHourAway(commitDate) {
     var date = new Date();
 console.log(date)
 console.log(commitDate)
-    var diff = Math.abs(date.getTime() - commitDate.getTime());
+    var diff = date.getTime() - commitDate.getTime();
 console.log(diff);
     var diffMin = Math.ceil(diff / (60000));
 	console.log(diffMin);
