@@ -31,11 +31,11 @@ console.log(commitDate);
     var diffMin = Math.ceil(diff / (60000));
 	console.log(diffMin);
     if (!isRepeated) noRepeat.push(commitDate);
-    if (diffMin > 60 && isRepeated) {
+    if (diffMin > 15 && isRepeated) {
         var index = noRepeat.indexOf(commitDate);
         noRepeat.slice(index,1);
     }
-    return diffMin <= 60 && !isRepeated
+    return diffMin <= 15 && !isRepeated
 }
 
 function read() {
@@ -79,7 +79,6 @@ function read() {
 
 module.exports = {
     start() {
-	read()
-        setInterval(read, 1000 * 3600);
+        setInterval(read, 1000 * 900);
     }
 }
