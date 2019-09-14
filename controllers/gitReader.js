@@ -27,12 +27,13 @@ function isHourAway(commitDate) {
     var date = new Date();
     var diff = Math.abs(date.getTime() - commitDate.getTime());
     var diffMin = Math.ceil(diff / (60000));
+	console.log(diffMin);
     if (!isRepeated) noRepeat.push(commitDate);
     if (diffMin > 60 && isRepeated) {
         var index = noRepeat.indexOf(commitDate);
         noRepeat.slice(index,1);
     }
-    return diffMin <= 60
+    return diffMin <= 60 && !isRepeated
 }
 
 function read() {
