@@ -52,6 +52,7 @@ function read() {
             request(option, (error, response, body) => {
                 var obj = JSON.parse(body);
                 if (obj.message != undefined)
+		console.log(obj.message);
                 for (var i = 0; i < obj.length; i++) {
                     option = {
                         url: obj[i].commit.url + "",
@@ -79,6 +80,6 @@ function read() {
 module.exports = {
     start() {
 	read()
-        setInterval(read, 1000 * 1800);
+        setInterval(read, 1000 * 3600);
     }
 }
