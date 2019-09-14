@@ -50,6 +50,7 @@ function read() {
                 var obj = JSON.parse(body);
                 if (obj.message != undefined)
                     console.log(obj.message);
+		console.log(obj);
                 for (var i = 0; i < obj.length; i++) {
                     option = {
                         url: obj[i].commit.url + "",

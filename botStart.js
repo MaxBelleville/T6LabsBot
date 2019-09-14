@@ -15,6 +15,5 @@ app.use(bodyParser.urlencoded({
 }))
 app.use(bodyParser.json());
 require('./routes/routes')(app);
-app.listen(port, ()=>{
-gitReader.start();
-});
+app.listen(port,()=>{
+gitReader.start();});
