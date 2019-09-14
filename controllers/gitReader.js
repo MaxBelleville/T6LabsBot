@@ -62,6 +62,7 @@ function read() {
                         obj = JSON.parse(body);
                         var date = convertDate(obj.commit.author.date);
                         if (isHourAway(date)) {
+				console.log("Yay an new push to github");
                             web.chat.postMessage({
                                 channel: 'CLR1Y2PV0',
                                 text: "New commit: *" + obj.commit.message + "*, by: *" + obj.commit.author.name + "*"
@@ -76,6 +77,8 @@ function read() {
 
 module.exports = {
     start() {
+	console.log("API succesfully started, reading git");
+	read()
         setInterval(read, 1000 * 3600);
     }
 }
