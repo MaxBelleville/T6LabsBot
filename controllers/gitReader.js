@@ -50,7 +50,6 @@ function read() {
                 var obj = JSON.parse(body);
                 if (obj.message != undefined)
                     console.log(obj.message);
-		console.log(obj);
                 for (var i = 0; i < obj.length; i++) {
                     option = {
                         url: obj[i].commit.url + "",
@@ -62,6 +61,7 @@ function read() {
                     request(option, (error, response, body) => {
                         obj = JSON.parse(body);
                         var date = convertDate(obj.commit.author.date);
+			console.log(date);
                         if (isHourAway(date)) {
 				console.log("Yay an new push to github");
                             web.chat.postMessage({
