@@ -28,6 +28,7 @@ function isHourAway(commitDate) {
 console.log(date)
 console.log(commitDate)
     var diff = Math.abs(date.getTime() - commitDate.getTime());
+console.log(diff);
     var diffMin = Math.ceil(diff / (60000));
 	console.log(diffMin);
     if (!isRepeated) noRepeat.push(commitDate);
@@ -64,7 +65,6 @@ function read() {
                     request(option, (error, response, body) => {
                         obj = JSON.parse(body);
                         var date = convertDate(obj.commit.author.date);
-			console.log(isHourAway(date));
                         if (isHourAway(date)) {
 			console.log("Yay an new push to github");
                             web.chat.postMessage({
