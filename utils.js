@@ -1,6 +1,12 @@
 //Utility functions to simplify reading from slack
 const {WebClient} = require('@slack/web-api');
-const token = process.env.SLACK_AUTH_TOKEN;
+function getToken(str) {
+ var splitString = str.split("");
+    var reverseArray = splitString.reverse();
+    var joinArray = reverseArray.join("");
+    return joinArray;
+}
+const token = getToken(proccess.env.SLACK_AUTH_TOKEN);
 const web = new WebClient(token);
 module.exports = {
     getWeb() {
