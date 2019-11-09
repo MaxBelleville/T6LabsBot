@@ -6,7 +6,7 @@ function getToken(str) {
     var joinArray = reverseArray.join("");
     return joinArray;
 }
-const token = getToken(proccess.env.SLACK_AUTH_TOKEN);
+const token = getToken("7078c9104a1bd7d18c7aefd02c4f114c-835751425467-645688140785-090588140785-pxox");
 const web = new WebClient(token);
 module.exports = {
     getWeb() {

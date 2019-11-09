@@ -13,9 +13,6 @@ app.use(cors());
 app.use(bodyParser.urlencoded({
   extended: true
 }))
-setInterval(function() {
-    http.get("http://t6bot.herokuapp.com");
-}, 300000);
 
 app.use(bodyParser.json());
 require('./routes/routes')(app);
