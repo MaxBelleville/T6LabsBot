@@ -5,7 +5,6 @@ const mongoose = require('mongoose');
 const gitReader =require('./controllers/gitReader')
 const cors = require('cors');
 const app = express();
-const port = process.env.PORT || 80;
 const http = require("http");
 mongoose.connect("mongodb+srv://T6LabBot:4676Bell130@cluster0-fstub.mongodb.net/test?retryWrites=true&w=majority",
   { useNewUrlParser: true })
@@ -16,5 +15,4 @@ app.use(bodyParser.urlencoded({
 
 app.use(bodyParser.json());
 require('./routes/routes')(app);
-app.listen(port,()=>{
-gitReader.start(); });
+gitReader.start();
