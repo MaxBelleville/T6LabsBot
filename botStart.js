@@ -7,7 +7,7 @@ const cors = require('cors');
 const app = express();
 const port = process.env.PORT || 80;
 const http = require("http");
-mongoose.connect(process.env.DB_URI,
+mongoose.connect("mongodb+srv://T6LabBot:4676Bell130@cluster0-fstub.mongodb.net/test?retryWrites=true&w=majority",
   { useNewUrlParser: true })
 app.use(cors());
 app.use(bodyParser.urlencoded({

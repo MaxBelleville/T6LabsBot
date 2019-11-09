@@ -46,7 +46,7 @@ function read() {
                 url: gitURL,
                 headers: {
                     'User-Agent': 'Req',
-                    'Authorization': 'token ' + process.env.GIT_TOKEN
+                    'Authorization': 'token ' + "8fe93f9471529303349c52132a8621f1e2698243"
                 }
             }
             request(option, (error, response, body) => {
@@ -58,7 +58,7 @@ function read() {
                         url: obj[i].commit.url + "",
                         headers: {
                             'User-Agent': 'Req',
-                            'Authorization': 'token ' + process.env.GIT_TOKEN
+                            'Authorization': 'token ' + "8fe93f9471529303349c52132a8621f1e2698243"
                         }
                     }
                     request(option, (error, response, body) => {
